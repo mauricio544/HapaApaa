@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-circle">
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Incidencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item button *ngFor="let inc of incidencias; index as position" color="secondary" lines="full" fill="solid" detail="true" [routerLink]="['/incidencias-detalle', inc.pk]">  
+  <ion-label [ngSwitch]="inc.fields.tipo">
+    <div *ngSwitchCase="'P'">
+      <h3>No se terminó la limpieza Programada</h3>
+      <h4>Fecha y hora de registro: {{ inc.fields.fecha_registro | date:'dd-MMM-yyyy hh:mm' }}</h4>
+    </div>
+    <div *ngSwitchCase="'F'">
+      <h3>Falta mejorar la limpieza en el área</h3>
+      <h4>Fecha y hora de registro: {{ inc.fields.fecha_registro | date:'dd-MMM-yyyy hh:mm' }}</h4>
+    </div>
+    <div *ngSwitchCase="'S'">
+      <h3>Se requiere de más personal de limpieza del que se tiene</h3>
+      <h4>Fecha y hora de registro: {{ inc.fields.fecha_registro | date:'dd-MMM-yyyy hh:mm' }}</h4>
+    </div>    
+  </ion-label>
+</ion-item>
+</ion-content>

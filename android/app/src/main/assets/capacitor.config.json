@@ -1,0 +1,6 @@
+{
+	"appId": "com.hapa.hapaapp",
+	"appName": "HapaApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

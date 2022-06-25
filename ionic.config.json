@@ -1,0 +1,11 @@
+{
+  "name": "HapaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [{
+      "path": "/api",
+      "proxyUrl": "http://hapa.llerenajuarez.online/web"
+  }]
+}

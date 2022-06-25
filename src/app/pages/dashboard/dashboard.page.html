@@ -1,0 +1,101 @@
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item [routerLink]="['/incidencia']" routerLinkActive="router-link-active" >
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        <ion-label>Incidencias</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/encuesta']" routerLinkActive="router-link-active" >
+        <ion-icon name="pencil-outline" slot="start"></ion-icon>
+        <ion-label>Encuestas</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/novedades']" routerLinkActive="router-link-active" >
+        <ion-icon name="newspaper-outline" slot="start"></ion-icon>
+        <ion-label>Novedades</ion-label>
+      </ion-item>
+      <!-- <ion-item [routerLink]="['/reporte']" routerLinkActive="router-link-active" >
+        <ion-icon name="stats-chart-outline" slot="start"></ion-icon>
+        <ion-label>Reportes</ion-label>
+      </ion-item>       -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Panel Control - HapaApp</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-item color="primary">        
+        <ion-label text-wrap>Bienvenido: {{ usuario }}</ion-label>        
+      </ion-item>
+    
+      <ion-card-content>   
+        <ion-item lines="inset">
+          <ion-label text-wrap>
+            <h1>{{ cliente }}</h1>
+          </ion-label>          
+        </ion-item>       
+        <ion-item lines="inset">
+          <ion-label text-wrap>
+            Nombres: {{ first_name }} {{ last_name }}
+          </ion-label>          
+        </ion-item>   
+        <ion-item lines="inset">
+          <ion-label text-wrap>
+            Cargo: {{ persona[0].fields.roles }}
+          </ion-label>          
+        </ion-item>         
+        <ion-item lines="inset">
+          <ion-label text-wrap>
+            Dirección: {{ persona[0].fields.direccion }}
+          </ion-label>          
+        </ion-item>           
+        <ion-item lines="inset">
+          <ion-label text-wrap>
+            Teléfono: {{ persona[0].fields.telefono }}
+          </ion-label>          
+        </ion-item>  
+        <ion-item lines="inset" [ngSwitch]="persona[0].fields.tipo_documento">
+          <ion-label *ngSwitchCase="'D'" text-wrap>
+            Tipo de Documento: DNI
+          </ion-label> 
+          <ion-label *ngSwitchCase="'P'" text-wrap>
+            Tipo de Documento: Pasaporte
+          </ion-label>          
+          <ion-label *ngSwitchCase="'E'" text-wrap>
+            Tipo de Documento: Carné Extranjería
+          </ion-label> 
+        </ion-item>   
+        <ion-item lines="inset">
+          <ion-label>
+            Nro Documento: {{ persona[0].fields.nro_documento }}
+          </ion-label>          
+        </ion-item>             
+      </ion-card-content>
+    </ion-card>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="end">
+        <ion-button (click)="modalIncidencias()">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="alert-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>     
+      <ion-title>Acceso Rápido</ion-title>
+    </ion-toolbar>
+  </ion-content>
+</div>
+

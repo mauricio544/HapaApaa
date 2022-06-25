@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-circle">
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>    
+    <ion-row>
+      <ion-col size="12">
+        <img src="assets/logo_hapa.png" alt="Hapa" style="height: 100px; width: 350px;">    
+      </ion-col>
+      <ion-col size="12">
+        <form [formGroup]="formularioRegister">
+          <ion-item>
+            <ion-label position="floating">Nombres</ion-label>
+            <ion-input formControlName="nombres"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellidos</ion-label>
+            <ion-input formControlName="apellidos"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input formControlName="telefono"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Dirección</ion-label>
+            <ion-input formControlName="direccion"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" placeholder="dd/mm/yyyy">Fecha de nacimiento</ion-label>
+            <ion-input formControlName="fecha_nacimiento" type="date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Tipo de documento</ion-label>
+            <ion-select formControlName="tipo_documento"  interface="action-sheet" cancelText="Cerrar">
+              <ion-select-option value="D">DNI</ion-select-option>
+              <ion-select-option value="P">Pasaporte</ion-select-option>
+              <ion-select-option value="E">Carné de Extranjería</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nro. Documento</ion-label>
+            <ion-input formControlName="documento"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Cargo</ion-label>
+            <ion-select formControlName="rol" interface="action-sheet" cancelText="Cerrar">
+              <ion-select-option *ngFor="let r of roles; index as position" value="{{ r.pk }}">{{ r.fields.nombre }}</ion-select-option>              
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Sede</ion-label>
+            <ion-select formControlName="sede" interface="action-sheet" cancelText="Cerrar">
+              <ion-select-option *ngFor="let s of sedes; index as position" value="{{ s.fields.cliente }}">{{ s.fields.nombre }}</ion-select-option>              
+            </ion-select>
+          </ion-item>          
+          <ion-button (click)="register()" expand="block" fill="solid" color="success">
+            Registrarse
+          </ion-button>
+        </form>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>  
+  </ion-content>
