@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-circle">
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles de la incidencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let item of detalles; index as position">
+  <img src="http://hapa.llerenajuarez.online/{{ item.fields.image }}" alt="">
+  <ion-card-header>
+    <ion-card-title [ngSwitch]="item.fields.estado">
+      <ion-chip *ngSwitchCase="'R'" color="warning" mode="ios" outline="true">
+        <ion-icon name="checkmark-outline"></ion-icon>
+        <ion-label color="warning">Registrada <ion-note slot="end">{{ item.fields.fecha_cambio_estado | date: 'dd-MMM-yyyy hh:mm' }}</ion-note></ion-label>                
+      </ion-chip>
+      <ion-chip *ngSwitchCase="'S'" color="primary" mode="ios" outline="true">        
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+        <ion-label *ngSwitchCase="'S'" color="success">Solucionada <ion-note slot="end">{{ item.fields.fecha_cambio_estado | date: 'dd-MMM-yyyy hh:mm' }}</ion-note></ion-label> 
+      </ion-chip> 
+      <ion-grid fixed *ngIf="persona_hapa">
+        <ion-row>          
+          <ion-col size="12">
+            <ion-button color="light" small (click)="modalSoluciones(id)">
+              Solucionar
+              <ion-icon name="bookmark-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>            
+    </ion-card-title>    
+  </ion-card-header> 
+  <ion-card-content>
+    <ion-item>
+      <ion-label *ngIf="item.fields.resolucion_por" color="secondary"><p>{{ item.fields.resolucion_por }}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label *ngIf="item.fields.rpta_resolucion" color="secondary"><p>{{ item.fields.rpta_resolucion }}</p></ion-label>
+    </ion-item>         
+  </ion-card-content> 
+</ion-card>
+</ion-content>
