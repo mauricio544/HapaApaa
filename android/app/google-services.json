@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661356304430",
+    "project_id": "hapaapp-2c1b0",
+    "storage_bucket": "hapaapp-2c1b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661356304430:android:41e7245e1f356de1b2a7bf",
+        "android_client_info": {
+          "package_name": "com.hapa.hapaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661356304430-oa1g3t40aglc1ij097238o509dke3u12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcCosvnCwXFCVU_QwaPxaJOyKDV5qH0bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661356304430-oa1g3t40aglc1ij097238o509dke3u12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
