@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  formularioRegister: FormGroup;
+  formularioRegister: UntypedFormGroup;
   url_roles = 'http://hapa.llerenajuarez.online/web/get_roles';
   url_sedes = 'http://hapa.llerenajuarez.online/web/get_sedes';
   url_save = 'http://hapa.llerenajuarez.online/web/register_app';
@@ -60,20 +60,20 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  constructor(public fb: FormBuilder, public ac: AlertController, public hc: HttpClient, private rt: Router) { 
+  constructor(public fb: UntypedFormBuilder, public ac: AlertController, public hc: HttpClient, private rt: Router) { 
     this.loadRoles();
     this.loadSedes();
     this.formularioRegister = this.fb.group({
-      "rol": new FormControl("", [Validators.required]),
-      "sede": new FormControl("", [Validators.required]),
-      "nombres": new FormControl("", [Validators.required]),
-      "apellidos": new FormControl("", [Validators.required]),
-      "email": new FormControl("", [Validators.required, Validators.email]),
-      "tipo_documento": new FormControl("", [Validators.required]),
-      "documento": new FormControl("", [Validators.required]),
-      "telefono": new FormControl("", [Validators.required]),
-      "direccion": new FormControl("", [Validators.required]),
-      "fecha_nacimiento": new FormControl("", [Validators.required])
+      "rol": new UntypedFormControl("", [Validators.required]),
+      "sede": new UntypedFormControl("", [Validators.required]),
+      "nombres": new UntypedFormControl("", [Validators.required]),
+      "apellidos": new UntypedFormControl("", [Validators.required]),
+      "email": new UntypedFormControl("", [Validators.required, Validators.email]),
+      "tipo_documento": new UntypedFormControl("", [Validators.required]),
+      "documento": new UntypedFormControl("", [Validators.required]),
+      "telefono": new UntypedFormControl("", [Validators.required]),
+      "direccion": new UntypedFormControl("", [Validators.required]),
+      "fecha_nacimiento": new UntypedFormControl("", [Validators.required])
     })
   }
 

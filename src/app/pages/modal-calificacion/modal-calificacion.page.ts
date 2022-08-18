@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { AlertController, ModalController } from '@ionic/angular';
   styleUrls: ['./modal-calificacion.page.scss'],
 })
 export class ModalCalificacionPage implements OnInit {
-  formularioCalificacion: FormGroup;
+  formularioCalificacion: UntypedFormGroup;
   url_calificacion: string = "http://hapa.llerenajuarez.online/web/save_calificacion_app";
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -25,9 +25,9 @@ export class ModalCalificacionPage implements OnInit {
   lock_20: boolean = false;
   lock: boolean = false;
   star_value: number = 0;
-  constructor(public modalCtrl: ModalController, public fb: FormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router) { 
+  constructor(public modalCtrl: ModalController, public fb: UntypedFormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router) { 
     this.formularioCalificacion = this.fb.group({
-      observacion: new FormControl("", Validators.required)      
+      observacion: new UntypedFormControl("", Validators.required)      
     });
   }
 

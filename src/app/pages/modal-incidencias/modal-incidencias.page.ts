@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { GalleryComponent } from '../gallery/gallery.component';
@@ -14,15 +14,15 @@ import { Storage } from '@capacitor/storage';
   styleUrls: ['./modal-incidencias.page.scss'],
 })
 export class ModalIncidenciasPage implements OnInit {
-  formularioIncidencias: FormGroup;
+  formularioIncidencias: UntypedFormGroup;
   url_incidencia: string = 'http://hapa.llerenajuarez.online/web/save_incidencia_app';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  constructor(public modalCtrl: ModalController, public fb: FormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router, public ps: GalleryComponent) { 
+  constructor(public modalCtrl: ModalController, public fb: UntypedFormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router, public ps: GalleryComponent) { 
     this.formularioIncidencias = this.fb.group({
-      imagen: new FormControl(""),
-      preguntas: new FormControl("", Validators.required)
+      imagen: new UntypedFormControl(""),
+      preguntas: new UntypedFormControl("", Validators.required)
     })
   }
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -10,16 +10,16 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  formularioLogin: FormGroup;
+  formularioLogin: UntypedFormGroup;
   url = 'http://hapa.llerenajuarez.online/web/login_app';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(public fb: FormBuilder, public ac: AlertController, public hc: HttpClient, private rt: Router) { 
+  constructor(public fb: UntypedFormBuilder, public ac: AlertController, public hc: HttpClient, private rt: Router) { 
     this.formularioLogin = this.fb.group({
-      "usuario": new FormControl("", [Validators.required]),
-      "contrasenia": new FormControl("", Validators.required)
+      "usuario": new UntypedFormControl("", [Validators.required]),
+      "contrasenia": new UntypedFormControl("", Validators.required)
     })
   }
 

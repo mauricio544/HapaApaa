@@ -15,10 +15,9 @@ import { PushHapaAlertsComponent } from './pages/push-hapa-alerts/push-hapa-aler
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GalleryComponent, Camera, PushHapaAlertsComponent],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule],
+    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GalleryComponent, Camera, PushHapaAlertsComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

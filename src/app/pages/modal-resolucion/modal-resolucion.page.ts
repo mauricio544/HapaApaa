@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { GalleryComponent } from '../gallery/gallery.component';
@@ -14,17 +14,17 @@ import { Storage } from '@capacitor/storage';
   styleUrls: ['./modal-resolucion.page.scss'],
 })
 export class ModalResolucionPage implements OnInit {
-  formularioSoluciones: FormGroup;
+  formularioSoluciones: UntypedFormGroup;
   url_solucion: string = 'http://hapa.llerenajuarez.online/web/save_solucion_app';
   id: number;
   minutos: number;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  constructor(public modalCtrl: ModalController, public fb: FormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router, public ps: GalleryComponent) { 
+  constructor(public modalCtrl: ModalController, public fb: UntypedFormBuilder, public ac: AlertController, public ht: HttpClient, public rt: Router, public ps: GalleryComponent) { 
     this.formularioSoluciones = this.fb.group({
-      imagen: new FormControl(""),
-      respuesta: new FormControl("", Validators.required)
+      imagen: new UntypedFormControl(""),
+      respuesta: new UntypedFormControl("", Validators.required)
     })
   }
 
