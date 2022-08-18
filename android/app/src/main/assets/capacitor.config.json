@@ -2,5 +2,14 @@
 	"appId": "com.hapa.hapaapp",
 	"appName": "HapaApp",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	}
 }

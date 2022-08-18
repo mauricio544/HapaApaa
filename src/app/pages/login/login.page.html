@@ -7,8 +7,8 @@
 <ion-content>
   <ion-grid fixed>    
     <ion-row>
-      <ion-col size="12">
-        <img src="assets/logo_hapa.png" alt="Hapa" style="height: 100px; width: 350px;">    
+      <ion-col size="12" style="text-align: center;">
+        <img src="assets/logo_hapa.png" alt="Hapa" style="height: 100px; width: 350px; margin: 0 auto;">    
       </ion-col>
       <ion-col size="12">
         <form [formGroup]="formularioLogin">
@@ -23,8 +23,8 @@
           <ion-item>
             <ion-label color="warning">Si aún no tiene usuario regístrese <a [routerLink]="['/register']" routerLinkActive="router-link-active" >aquí</a></ion-label>
           </ion-item>
-          <ion-button (click)="login()" expand="block" fill="solid" color="success">
-            Ingresar
+          <ion-button (click)="login()" expand="block" fill="solid" style="--background: #d82a27 !important; --color: #ffffff;">
+            Ingresar <ion-icon name="log-in-outline" slot="end"></ion-icon>
           </ion-button>
         </form>
       </ion-col>      

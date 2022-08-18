@@ -1,0 +1,54 @@
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title>Calificar Sólución</ion-title>  
+    <ion-icon name='close-circle' (click)='dismiss()' style='float: right;'></ion-icon>  
+  </ion-toolbar>  
+</ion-header>  
+  
+<ion-content>  
+ <form [formGroup]="formularioCalificacion">  
+  <ion-item>
+    <ion-label position="floating">Observación</ion-label>
+    <ion-input formControlName="observacion"></ion-input>
+  </ion-item>    
+  <ion-item>    
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2">
+          <a (click)="$event.stopPropagation();">           
+            <ion-icon class="hapa_star" (click)="addStar(4)" (mouseover)="lock = true" [name]="lock_4 ? name_fill : name" slot="icon-only" size="large"></ion-icon>
+          </a>          
+        </ion-col>
+        <ion-col size="2">
+          <a (click)="$event.stopPropagation();">           
+            <ion-icon class="hapa_star" (click)="addStar(8)" (mouseover)="lock = true" [name]="lock_8 ? name_fill : name" slot="icon-only" size="large"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col size="2">
+          <a (click)="$event.stopPropagation();">
+            <ion-icon class="hapa_star" (click)="addStar(12)" (mouseover)="lock = true" [name]="lock_12 ? name_fill : name" slot="icon-only" size="large"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col size="2">
+          <a (click)="$event.stopPropagation();">
+            <ion-icon class="hapa_star" (click)="addStar(16)" (mouseover)="lock = true" [name]="lock_16 ? name_fill : name" slot="icon-only" size="large"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col size="2">
+          <a (click)="$event.stopPropagation();">
+            <ion-icon class="hapa_star" (click)="addStar(20)" (mouseover)="lock = true" [name]="lock_20 ? name_fill : name" slot="icon-only" size="large"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col size="2">
+          
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>    
+  </ion-item>    
+  <br/><br/>
+  <ion-button (click)="guardarCalificacion()" expand="block" class="btnIncidencias" style="--background: #d72927; --color: #ffffff; margin-top: 12%;">
+    Enviar <ion-icon name="send" slot="end"></ion-icon>
+  </ion-button>  
+ </form> 
+</ion-content>

@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>asistencia</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-circle">
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Toma de asistencias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let operacion of operarios; index as position">
+    <ion-item>
+      <ion-label>{{ operacion.fields.persona }}</ion-label>            
+    </ion-item>  
+    <ion-item>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-label>Tardanza</ion-label>
+            <ion-checkbox [(ngModel)]="operacion.fields.tardanza" color="warning"></ion-checkbox>
+            <ion-input type="time" *ngIf="operacion.fields.tardanza" [(ngModel)]="operacion.fields.hora"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>Falta</ion-label>
+            <ion-checkbox [(ngModel)]="operacion.fields.falta" color="danger"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-card>  
+  <ion-card *ngFor="let pic of ps.pics; index as position">
+    <ion-label color="warning">{{ pic.filepath }}</ion-label>        
+    <img src="{{ pic.webviewPath }}" alt="">
+  </ion-card>
+  <ion-button (click)="addPhotoAsistencia()" expand="block" style="--background: #1c1a19; --color: #ffffff;">
+    Tomar fotografía <ion-icon slot="start" name="camera"></ion-icon>
+  </ion-button> 
+  <ion-button (click)="guardarAsistencias()" expand="block" class="btnAsistencia" style="--background: #d72927; --color: #ffffff;; margin-top: 12%;">
+    Enviar <ion-icon name="send" slot="end"></ion-icon>
+  </ion-button>
 </ion-content>

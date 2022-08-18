@@ -99,7 +99,8 @@ export class ModalIncidenciasPage implements OnInit {
       if(data["status"]){ 
         this.closeAlerts();       
         alert.present();
-        this.dismiss();        
+        this.dismiss();    
+        this.rt.url    
       }else{        
         alert_no.present();
         return;

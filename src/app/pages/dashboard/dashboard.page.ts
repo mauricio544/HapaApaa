@@ -8,21 +8,22 @@ import { ModalIncidenciasPage } from '../modal-incidencias/modal-incidencias.pag
   styleUrls: ['./dashboard.page.scss'],
 })
 
-export class DashboardPage implements OnInit {  
+export class DashboardPage implements OnInit {    
   usuario: String;
   first_name: String;
   last_name: String;
-  persona: Object;  
-  cliente: String;
+  persona = JSON.parse(localStorage.getItem('persona')); 
+  persona_hapa = this.persona[0].fields.personal_hapa;
+  cliente: String;  
   constructor(private routerOutlet: IonRouterOutlet, public modalController: ModalController) {
     this.usuario = localStorage.getItem('usuario');
     this.first_name = localStorage.getItem('first_name');
-    this.last_name = localStorage.getItem('last_name');
-    this.persona = JSON.parse(localStorage.getItem('persona')); 
-    this.cliente = localStorage.getItem('cliente')     
+    this.last_name = localStorage.getItem('last_name');    
+    this.cliente = localStorage.getItem('cliente');         
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    console.info(this.persona_hapa);
   }
 
   async modalIncidencias() {

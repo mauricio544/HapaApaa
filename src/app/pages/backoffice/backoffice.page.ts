@@ -4,22 +4,21 @@ import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet } from '@ionic/angular';
 
 @Component({
-  selector: 'app-incidencia',
-  templateUrl: './incidencia.page.html',
-  styleUrls: ['./incidencia.page.scss'],
+  selector: 'app-backoffice',
+  templateUrl: './backoffice.page.html',
+  styleUrls: ['./backoffice.page.scss'],
 })
-export class IncidenciaPage implements OnInit {
+export class BackofficePage implements OnInit {
   persona: any = JSON.parse(localStorage.getItem('persona'));
   persona_code: number = this.persona[0].pk;
-  persona_hapa: boolean = this.persona[0].personal_hapa;
-  url: string = 'http://hapa.llerenajuarez.online/web/show_incidencias_app';
+  url: string = 'http://hapa.llerenajuarez.online/web/get_backoffice_info';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  incidencias: Incidencia[] = [];
-  async loadIncidencias(){
+  backoffice: Backoffice[] = [];
+  async loadBackoffice() {
     var data_persona = {
-      code_persona: this.persona_code
+      persona: this.persona_code
     }
     const alert = await this.ac.create({
       cssClass: 'my-custom-class',
@@ -30,32 +29,35 @@ export class IncidenciaPage implements OnInit {
     });
     this.ht.post(this.url, JSON.stringify(data_persona), this.httpOptions).subscribe(data => {
       if(data["status"]){
-        this.incidencias = JSON.parse(data["incidencias"]);
-        console.info(this.incidencias);
+        this.backoffice = JSON.parse(data["backoffice"]);
+        console.info(this.backoffice);
       }else{
         alert.present();
         return;
       }
     });
   }
-
-  constructor(private io: IonRouterOutlet, private ac: AlertController, private ht: HttpClient, private rt: Router) {
-    this.loadIncidencias();
+  constructor(private io: IonRouterOutlet, private ac: AlertController, private ht: HttpClient, private rt: Router) { 
+    
   }
 
   ngOnInit() {
+    this.loadBackoffice();
   }
 
 }
 
-export interface FieldsIncidencia {
-  fecha_registro: Date;
-  registrada_por: number;
-  tipo:string;
+export interface FieldsBackoffice {
+  persona: number;
+  cargo: string;
+  telefono_empresa: string;
+  email_empresa: string;
+  email_adicional: string;
+  importancia: number;
 }
 
-export interface Incidencia{ 
+export interface Backoffice{ 
   model: string;
   pk:number;
-  fields: FieldsIncidencia; 
+  fields: FieldsBackoffice; 
 }

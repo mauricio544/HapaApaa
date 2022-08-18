@@ -17,6 +17,7 @@ export class ModalResolucionPage implements OnInit {
   formularioSoluciones: FormGroup;
   url_solucion: string = 'http://hapa.llerenajuarez.online/web/save_solucion_app';
   id: number;
+  minutos: number;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -28,7 +29,7 @@ export class ModalResolucionPage implements OnInit {
   }
 
   ngOnInit() {
-    console.info(this.id);
+    console.info(this.id, this.minutos);
   }
 
   dismiss() {
@@ -61,7 +62,7 @@ export class ModalResolucionPage implements OnInit {
         cssClass: 'my-custom-class',
         header: 'Hapa Alerta',
         subHeader: 'Error con datos',
-        message: 'Los campos son obligatorios, debe de dar una respuesta y cargar una fotografía',
+        message: 'Los campos son obligatorios, debe de ingresar una respuesta y cargar una fotografía',
         buttons: ['OK']
       });
   
@@ -77,7 +78,8 @@ export class ModalResolucionPage implements OnInit {
       respuesta: f.respuesta,
       code_persona: persona[0].pk,
       nombre_imagen: this.ps.pics[0].filepath,
-      incidencia: this.id
+      incidencia: this.id,
+      minutos: this.minutos
     }
 
     console.info(solucion);
@@ -102,7 +104,8 @@ export class ModalResolucionPage implements OnInit {
       if(data["status"]){ 
         this.closeAlerts();       
         alert.present();
-        this.dismiss();        
+        this.dismiss();   
+        this.rt.navigate(['/dashboard'])     
       }else{        
         alert_no.present();
         return;

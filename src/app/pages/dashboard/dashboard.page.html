@@ -10,7 +10,7 @@
         <ion-icon name="create-outline" slot="start"></ion-icon>
         <ion-label>Incidencias</ion-label>
       </ion-item>
-      <ion-item [routerLink]="['/encuesta']" routerLinkActive="router-link-active" >
+      <ion-item *ngIf="!persona_hapa" [routerLink]="['/encuesta']" routerLinkActive="router-link-active" >
         <ion-icon name="pencil-outline" slot="start"></ion-icon>
         <ion-label>Encuestas</ion-label>
       </ion-item>
@@ -18,10 +18,14 @@
         <ion-icon name="newspaper-outline" slot="start"></ion-icon>
         <ion-label>Novedades</ion-label>
       </ion-item>
-      <!-- <ion-item [routerLink]="['/reporte']" routerLinkActive="router-link-active" >
-        <ion-icon name="stats-chart-outline" slot="start"></ion-icon>
-        <ion-label>Reportes</ion-label>
-      </ion-item>       -->
+      <ion-item *ngIf="!persona_hapa" [routerLink]="['/backoffice']" routerLinkActive="router-link-active" >
+        <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+        <ion-label>Backoffice (organigrama)</ion-label>
+      </ion-item>
+      <ion-item *ngIf="persona_hapa" [routerLink]="['/asistencia']" routerLinkActive="router-link-active" >
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        <ion-label>Asistencias</ion-label>
+      </ion-item>      
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -37,12 +41,14 @@
   
   <ion-content>
     <ion-card>
-      <ion-item color="primary">        
-        <ion-label text-wrap>Bienvenido: {{ usuario }}</ion-label>        
+      <ion-item style="--background: #1c1a19; --color: #ffffff;">        
+        <ion-label text-wrap>
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon> {{ usuario }} 
+        </ion-label>        
       </ion-item>
     
-      <ion-card-content>   
-        <ion-item lines="inset">
+      <ion-card-content style="--background: #ffffff">   
+        <ion-item lines="inset" style="--background: #ffffff; --color: #1c1a19;">
           <ion-label text-wrap>
             <h1>{{ cliente }}</h1>
           </ion-label>          
@@ -85,7 +91,7 @@
         </ion-item>             
       </ion-card-content>
     </ion-card>
-    <ion-toolbar color="secondary">
+    <ion-toolbar style="--background: #d82a27; --color: #ffffff;">
       <ion-buttons slot="end">
         <ion-button (click)="modalIncidencias()">
           <ion-icon slot="icon-only" name="add-outline"></ion-icon>
@@ -94,7 +100,7 @@
           <ion-icon slot="icon-only" name="alert-circle-outline"></ion-icon>
         </ion-button>
       </ion-buttons>     
-      <ion-title>Acceso Rápido</ion-title>
+      <ion-title>Añadir Incidencia</ion-title>
     </ion-toolbar>
   </ion-content>
 </div>

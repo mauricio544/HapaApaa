@@ -20,6 +20,7 @@ export class RegisterPage implements OnInit {
 
   roles: Rol[] = [];
   sedes: Sede[] = [];
+  cliente: number;
 
   async loadRoles(){
     const alert = await this.ac.create({
@@ -109,6 +110,12 @@ export class RegisterPage implements OnInit {
       return;
     }
 
+    for(let c of this.sedes){
+      if(c.pk == f.sede){
+        this.cliente = c.fields.cliente;
+      }
+    }
+
     var persona = {
       telefono: f.telefono,
       direccion: f.direccion,
@@ -116,7 +123,7 @@ export class RegisterPage implements OnInit {
       tipo_documento: f.tipo_documento,
       nro_documento: f.documento,
       roles: f.rol,
-      sede: f.sede,
+      sede: this.cliente,
       email: f.email,
       nombres: f.nombres,
       apellidos: f.apellidos

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AsistenciaPageRoutingModule } from './asistencia-routing.module';
 
 import { AsistenciaPage } from './asistencia.page';
+import { GalleryComponent } from '../gallery/gallery.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { AsistenciaPage } from './asistencia.page';
     IonicModule,
     AsistenciaPageRoutingModule
   ],
-  declarations: [AsistenciaPage]
+  declarations: [AsistenciaPage, GalleryComponent],
+  exports: [GalleryComponent]
 })
 export class AsistenciaPageModule {}

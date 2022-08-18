@@ -15,7 +15,7 @@
       <ion-select-option value="S">Se requiere de más personal de limpieza del que se tiene</ion-select-option>
     </ion-select>
   </ion-item>  
-  <ion-button (click)="addPhoto()" expand="block" fill="clear" shape="round">
+  <ion-button (click)="addPhoto()" expand="block" style="--background: #1c1a19; --color: #ffffff;">
     Tomar fotografía <ion-icon slot="start" name="camera"></ion-icon>
   </ion-button>  
   <ion-card *ngFor="let pic of ps.pics; index as position">
@@ -23,7 +23,7 @@
     <img src="{{ pic.webviewPath }}" alt="">
   </ion-card>
   <br/><br/>
-  <ion-button (click)="guardarIncidencia()" expand="block" fill="outline" size="small" color="success" class="btnIncidencias" style="margin-top: 12%;">
+  <ion-button (click)="guardarIncidencia()" expand="block" class="btnIncidencias" style="--background: #d72927; --color: #ffffff;; margin-top: 12%;">
     Enviar <ion-icon name="send" slot="end"></ion-icon>
   </ion-button>
   <ion-input type="hidden" formControlName="imagen" *ngFor="let pic of ps.pics; index as position" value="{{ pic.webviewPath}}"></ion-input>

@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'asistencia',
-    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
   {
     path: 'reporte',
@@ -58,6 +58,14 @@ const routes: Routes = [
   {
     path: 'modal-resolucion',
     loadChildren: () => import('./pages/modal-resolucion/modal-resolucion.module').then( m => m.ModalResolucionPageModule)
+  },
+  {
+    path: 'modal-calificacion',
+    loadChildren: () => import('./pages/modal-calificacion/modal-calificacion.module').then( m => m.ModalCalificacionPageModule)
+  },
+  {
+    path: 'backoffice',
+    loadChildren: () => import('./pages/backoffice/backoffice.module').then( m => m.BackofficePageModule)
   }
 ];
 

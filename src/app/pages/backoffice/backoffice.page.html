@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-circle">
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Backoffice (Organigrama)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let b of backoffice; index as position">
+    <ion-item>
+      <ion-label [ngSwitch]="b.fields.cargo" class="text-wrap">
+        <div *ngSwitchCase="'GG'">          
+          <h4>GERENTE GENERAL</h4>
+        </div>
+        <div *ngSwitchCase="'GA'">          
+          <h4>GERENTE ADMINISTRACIÓN Y FINANZAS</h4>
+        </div>
+        <div *ngSwitchCase="'CS'">
+          <h4>COORDINADOR SIG</h4>
+        </div>
+        <div *ngSwitchCase="'CT'">
+          <h4>COORDINADOR DE TALENTO HUMANO</h4>
+        </div>
+        <div *ngSwitchCase="'CL'">
+          <h4>COORDINADOR DE LOGÍSTICA</h4>
+        </div>
+        <div *ngSwitchCase="'CO'">
+          <h4>COORDINADOR DE OPERACIONES</h4>
+        </div> 
+        <div>
+          <h5><a href="mailto:{{ b.fields.email_empresa }}"><ion-icon slot="start" name="mail-sharp" size="small" style="vertical-align: middle;"></ion-icon> {{ b.fields.email_empresa }}</a></h5>
+        </div>
+        <div *ngIf="b.fields.email_adicional">
+          <h5><a href="mailto:{{ b.fields.email_adicional }}"><ion-icon slot="start" name="mail-sharp" size="small" style="vertical-align: middle;"></ion-icon> {{ b.fields.email_adicional }}</a></h5>
+        </div>
+        <div>
+          <h5><ion-icon slot="start" name="call-sharp" style="vertical-align: middle;"></ion-icon> {{ b.fields.telefono_empresa }}</h5>
+        </div>
+      </ion-label> 
+    </ion-item>
+  </ion-card>
+</ion-content>

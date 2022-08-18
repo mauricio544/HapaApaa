@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { defineCustomElements } from '@ionic/pwa-elements/loader'
+import { PushHapaAlertsComponent } from './pages/push-hapa-alerts/push-hapa-alerts.component';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,12 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader'
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(private hn: PushHapaAlertsComponent) {
     defineCustomElements(window);
+    this.init();
+  }
+
+  init() {
+    this.hn.initPush();
   }
 }
